@@ -1,8 +1,9 @@
 import asyncio
 from fastapi import FastAPI
 import httpx
-
+from routes import scoreRoute
 app = FastAPI()
+app.include_router(scoreRoute.score)
 
 @app.get("/health")
 async def health_check():
@@ -21,3 +22,4 @@ async def periodic_health_check():
 @app.on_event("startup")
 async def startup_event():
     asyncio.create_task(periodic_health_check())
+
