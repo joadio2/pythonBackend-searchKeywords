@@ -63,7 +63,7 @@ async def score_entries(entries: Request):
             })
 
         result.sort(key=lambda x: x["score"], reverse=True)
-        
+        print(result)
         return {"results": result}
 
     except Exception as e:
